@@ -7,21 +7,25 @@ window.requestAnimFrame = (function(){
 	};
 })();
 
+function animloop(){
+    requestAnimFrame(animloop);
+    render();
+};
+
 window.onresize = function (e) {
-    var canvas = document.getElementsByTagName("canvas")[0];
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
     render();
 }
 
-function render () {
+function render (color_bit) {
     var degree;
     var canvas = document.getElementsByTagName("canvas")[0];
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     var context = canvas.getContext('2d');
     var lines = 20;
     var length = Math.sqrt(Math.pow(canvas.width,2)+Math.pow(canvas.height,2));
     for (degree = 0; degree < lines; degree++) {
-	if (degree % 2 == 0)
+	if (degree % 2 == (parseInt((new Date().getTime() / 500)) % 2))
 	    context.fillStyle="#00ffff";
 	else
 	    context.fillStyle="#ff0000";
@@ -42,5 +46,5 @@ function render () {
 (function init(){
     var img = document.getElementsByTagName("img")[0];
     img.src = "http://i.imgur.com/to9dVgu.gif";
-    img.onload = window.onresize;
+    img.onload = animloop;
 })();
