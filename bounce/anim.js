@@ -14,10 +14,9 @@ window.onresize = function (e) {
     render();
 }
 
-//(function init(){
+(function init(){
     window.onresize();
-    var context = document.getElementById("playground").getContext('2d');
-//})();
+})();
 
 
 (function animloop(){
