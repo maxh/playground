@@ -14,10 +14,7 @@ window.onresize = function (e) {
     render();
 }
 
-(function init(){
-    window.onresize();
-})();
-
+window.onresize();
 
 (function animloop(){
     requestAnimFrame(animloop);
@@ -41,6 +38,7 @@ function Ball(){
 
 function render () {
     // Set canvas size.
+    console.log('rendered');
     var canvas = document.getElementById("playground");
     var context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
