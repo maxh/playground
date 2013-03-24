@@ -18,20 +18,29 @@ function render () {
     var degree;
     var canvas = document.getElementsByTagName("canvas")[0];
     var context = canvas.getContext('2d');
-    context.fillStyle="#00ffff";
-    var lines = 12;
-    for (degree = 0; degree < 12; degree++) {
+    var lines = 20;
+    var length = Math.sqrt(Math.pow(canvas.width,2)+Math.pow(canvas.height,2));
+    for (degree = 0; degree < lines; degree++) {
+	if (degree % 2 == 0)
+	    context.fillStyle="#00ffff";
+	else
+	    context.fillStyle="#ff0000";
+	var delta = 360/lines;
 	context.beginPath();
-	context.moveTo(canvas.width/2, canvas.height/2);
-	context.lineTo(3,0);
+	context.arc(canvas.width/2, canvas.height/2, length,
+		    (Math.PI/180)*(degree*delta),
+		    (Math.PI/180)*(degree+1)*delta);
+	context.lineTo(canvas.width/2, canvas.height/2);
 	context.closePath();
-	context.arc(canvas.width/2, canvas.height/2, 30, (Math.PI/180)*180,
-		    (Math.PI/180)*210);
-	context.stroke();
+	context.fill();
     }
+    var img = document.getElementsByTagName("img")[0];
+    context.drawImage(img, canvas.width/2 - img.width/2,
+		      canvas.height/2 - img.height/2);
 }
 
 (function init(){
-    window.onresize();
-    render();
+    var img = document.getElementsByTagName("img")[0];
+    img.src = "http://i.imgur.com/to9dVgu.gif";
+    img.onload = window.onresize;
 })();
