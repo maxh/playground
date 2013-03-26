@@ -16,7 +16,7 @@ window.onresize = function (e) {
     render();
 }
 
-function render (color_bit) {
+function render () {
     var degree;
     var canvas = document.getElementsByTagName("canvas")[0];
     canvas.width = window.innerWidth;
