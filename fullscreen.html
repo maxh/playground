@@ -1,14 +1,22 @@
-<html>                                                                          
-  <head>                                                                        
-  </head>                                                                       
-  <body>                                                                        
-    <p id="content">Hello!</p>                                                  
-  </body>                                                                       
-  <script>                                                                      
-    var el = document.getElementById("content");                                
-    el = addEventListener("click", function () {                                
-      document.getElementById("content").requestFullScreen();                
-      // document.getElementById("content").webkitRequestFullScreen();             
-    });                                                                         
-  </script>                                                                     
+<html>
+  <body>
+    <section id="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et purus ligula, eget pellentesque turpis. Sed ligula dui, aliquam et vestibulum ac, faucibus non lacus. Nullam sit amet massa ut sem ultricies semper hendrerit nec neque. Pellentesque hendrerit nisl sit amet ante euismod ac volutpat eros eleifend. Aliquam et justo orci, convallis consequat ante. Mauris vitae tellus quis lacus adipiscing rutrum. Nulla varius lorem sit amet ligula accumsan eget tempor erat convallis. Fusce interdum lectus et leo condimentum molestie.</p>
+      <p>Etiam ac tellus nunc, in tempus nibh. Curabitur viverra tristique fermentum. Nam non mauris quam, sit amet tincidunt lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum purus est, porttitor sit amet tempus non, sagittis accumsan dolor. Aliquam in turpis eget est porttitor iaculis. Sed tristique suscipit sapien, at ornare arcu ultrices nec. Quisque lectus lacus, bibendum ac bibendum a, aliquam id sem. Vestibulum scelerisque consequat posuere. Nullam feugiat fringilla neque, quis aliquam metus tristique eget. Aliquam pulvinar, enim non commodo porta, ligula orci volutpat est, sit amet vehicula lacus lorem sit amet velit. Suspendisse ac tellus augue, id vehicula quam. Cras et diam dolor. Aenean sit amet augue quam, condimentum bibendum odio.</p>
+  </body>
+  <script>
+    var el = document.getElementById("content");
+    el = addEventListener("click", function () {
+      fullScreen(el);
+    });
+    function fullScreen(element) {
+      if(element.requestFullScreen) {
+        element.requestFullScreen();
+      } else if(element.webkitRequestFullScreen ) {
+        element.webkitRequestFullScreen();
+      } else if(element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      }
+    }
+  </script>
 </html>
