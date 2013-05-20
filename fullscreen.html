@@ -8,10 +8,11 @@
     var el = document.getElementById("content");
     el.addEventListener("click", function () {
       fullScreen(el);
+      el.style.color = blue;
     });
     function fullScreen(element) {
-      if(element.requestFullScreen) {
-        element.requestFullScreen();
+      if(element.requestFullscreen) {
+        element.requestFullscreen();
       } else if(element.webkitRequestFullScreen ) {
         element.webkitRequestFullScreen();
       } else if(element.mozRequestFullScreen) {
